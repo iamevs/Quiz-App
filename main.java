@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import javax.swing.*;
 
 public class main {
     public static void main(String[] args) {
@@ -13,9 +14,7 @@ public class main {
         } catch (InterruptedException e) {
             System.out.println("Interrupted");
         }
-        // clear screen in terminal
-        System.out.print("\033[H\033[2J");
-        System.out.println("Your Mark: " + c1.mark +"/"+ c1.A.length);
+        JOptionPane.showMessageDialog(null, "Your Score is " + c1.mark + " out of " + c1.A.length);
     }
 }
 
@@ -32,8 +31,16 @@ class Scheduler {
             }
         }
         Scanner sc = new Scanner(System.in);
-        System.out.print("Your Option : ");
-        String ans = sc.nextLine();
+
+        // clear screen in terminal
+        // System.out.print("\033[H\033[2J");
+        // (1) System.out.println(contents);
+        // (2) System.out.print("Your Option : ");
+
+        // converted the 1 & 2 to a input dialog box
+        String ans = JOptionPane.showInputDialog(contents + "\n\nYour Option : ");
+
+        // String ans = sc.nextLine();
         available = false;
         notifyAll();
         return ans;
@@ -50,8 +57,8 @@ class Scheduler {
         }
         contents = value;
         // clear screen in terminal
-        System.out.print("\033[H\033[2J");
-        System.out.println(contents);
+        // System.out.print("\033[H\033[2J");
+        // System.out.println(contents);
         available = true;
         notifyAll();
     }
